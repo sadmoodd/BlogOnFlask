@@ -1,0 +1,41 @@
+<!-- templates/admin.html -->
+{% extends 'layout.html' %}
+{% block content %}
+    <h2>Админ панель</h2>
+    
+    <h3>Все пользователи</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Роль</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.email }}</td>
+                <td>{{ 'Администратор' if user.is_admin else 'Пользователь' }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h3>Все посты</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Заголовок</th>
+                <th>Содержимое</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for post in posts %}
+            <tr>
+                <td>{{ post.title }}</td>
+                <td>{{ post.content }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
